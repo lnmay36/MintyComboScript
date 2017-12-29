@@ -65,7 +65,7 @@ def endProcess(signalnum=None, handler=None):
 
 
 def readVoltage():
-    value = adc.read_adc(0, gain=GAIN)
+    value = adc.read_adc(3, gain=GAIN)
     return value
 
 
