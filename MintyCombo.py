@@ -201,8 +201,6 @@ def checkFunction():
             volumeUp()
         elif volumeDownBtn.is_pressed:
             volumeDown()
-        elif shutdownBtn.is_pressed:
-            shutdown()
         elif monitorBtn.is_pressed:
             toggleState()
         elif wifiBtn.is_pressed:
@@ -245,4 +243,5 @@ except:
 
 # Interrupt
 functionBtn.when_pressed = checkFunction
+shutdownBtn.when_pressed = shutdown
 pause()
