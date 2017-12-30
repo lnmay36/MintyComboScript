@@ -209,6 +209,8 @@ def checkFunction():
             bluetoothToggle()
         elif cheatBtn.is_pressed:
             showCheat()
+        elif shutdownBtn.if_pressed:
+            os.system("sudo reboot")
 
 
 # Initial File Setup
