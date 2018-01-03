@@ -8,11 +8,11 @@ Name:  Combo Shortcut Script - Utility for the MintyPi project.
 Description:  Monitors GPIO interrupts to adjust volume with icons, lcd dimming, battery monitor, wifi and bluetooth toggle, and performs safe shutdown.
 Usage:  Mode + Y = Toggle Wifi with Icon
         Mode + B = Toggle BT with Icon
-        Mode + A = Toggle Battery
-        Mode + X = Initiate Safe Shutdown
+        A = Toggle Battery
+        X = Initiate Safe Shutdown
         Mode + Dpad Right = Volume Up with Icon
         Mode + Dpad Left  = Volume Down with Icon
-        Mode + Dpad Up    = Dimming Up
+        Dpad Up    = Dimming Up
         Mode + Dpad Down  = Dimming Down
         Mode + Right Shoulder = Display Cheat
 '''
@@ -56,7 +56,7 @@ brightnessDownBtn = Button(5)
 volumeUpBtn = Button(23)
 volumeDownBtn = Button(14)
 shutdownBtn = Button(26)
-monitorBtn = Button(21)
+monitorBtn = Button(22)
 wifiBtn = Button(20)
 bluetoothBtn = Button(16)
 cheatBtn = Button(6)
@@ -199,8 +199,6 @@ def checkFunction():
             brightnessDown()
         elif volumeDownBtn.is_pressed:
             volumeDown()
-        elif monitorBtn.is_pressed:
-            toggleState()
         elif wifiBtn.is_pressed:
             wifiToggle()
         elif bluetoothBtn.is_pressed:
@@ -243,4 +241,5 @@ except:
 functionBtn.when_pressed = checkFunction
 shutdownBtn.when_pressed = shutdown
 volumeUpBtn.when_pressed = volumeUp
+monitorBtn.when_pressed = toggleState
 pause()
