@@ -53,7 +53,7 @@ functionPin = grabPin(pinFile, pinDirectory)
 functionBtn = Button(functionPin)
 brightnessUpBtn = Button(4)
 brightnessDownBtn = Button(5)
-volumeUpBtn = Button(22)
+volumeUpBtn = Button(23)
 volumeDownBtn = Button(14)
 shutdownBtn = Button(26)
 monitorBtn = Button(21)
@@ -197,8 +197,6 @@ def checkFunction():
             brightnessUp()
         elif brightnessDownBtn.is_pressed:
             brightnessDown()
-        elif volumeUpBtn.is_pressed:
-            volumeUp()
         elif volumeDownBtn.is_pressed:
             volumeDown()
         elif monitorBtn.is_pressed:
@@ -209,8 +207,6 @@ def checkFunction():
             bluetoothToggle()
         elif cheatBtn.is_pressed:
             showCheat()
-        elif shutdownBtn.if_pressed:
-            os.system("sudo reboot")
 
 
 # Initial File Setup
@@ -246,4 +242,5 @@ except:
 # Interrupt
 functionBtn.when_pressed = checkFunction
 shutdownBtn.when_pressed = shutdown
+volumeUpBtn.when_pressed = volumeUp
 pause()
