@@ -54,9 +54,9 @@ functionBtn = Button(functionPin)
 brightnessUpBtn = Button(4)
 brightnessDownBtn = Button(5)
 volumeUpBtn = Button(23)
-volumeDownBtn = Button(14)
+volumeDownBtn = Button(22)
 shutdownBtn = Button(26)
-monitorBtn = Button(22)
+#monitorBtn = Button(22)
 wifiBtn = Button(20)
 bluetoothBtn = Button(16)
 cheatBtn = Button(6)
@@ -197,8 +197,6 @@ def checkFunction():
             brightnessUp()
         elif brightnessDownBtn.is_pressed:
             brightnessDown()
-        elif volumeDownBtn.is_pressed:
-            volumeDown()
         elif wifiBtn.is_pressed:
             wifiToggle()
         elif bluetoothBtn.is_pressed:
@@ -208,38 +206,10 @@ def checkFunction():
 
 
 # Initial File Setup
-try:
-    comboStates = readData(statePath)
-    wiringpi.wiringPiSetup()
-    wiringpi.pinMode(led, 2)
-    wiringpi.pwmWrite(led, comboStates['brightness'])
-    os.system("amixer sset -q 'PCM' " + str(comboStates['volume']) + "%")
-    if comboStates['wifi'] == 1:
-        os.system("sudo rfkill unblock wifi")
-    else:
-        os.system("sudo rfkill block wifi")
-    if comboStates['bluetooth'] == 1:
-        os.system("sudo rfkill unblock bluetooth")
-    else:
-        os.system("sudo rfkill block bluetooth")
-except:
-    writeData(statePath)
-    wiringpi.wiringPiSetup()
-    wiringpi.pinMode(led, 2)
-    wiringpi.pwmWrite(led, comboStates['brightness'])
-    os.system("amixer sset -q 'PCM' " + str(comboStates['volume']) + "%")
-    if comboStates['wifi'] == 1:
-        os.system("sudo rfkill unblock wifi")
-    else:
-        os.system("sudo rfkill block wifi")
-    if comboStates['bluetooth'] == 1:
-        os.system("sudo rfkill unblock bluetooth")
-    else:
-        os.system("sudo rfkill block bluetooth")
+
 
 # Interrupt
-functionBtn.when_pressed = checkFunction
 shutdownBtn.when_pressed = shutdown
 volumeUpBtn.when_pressed = volumeUp
-monitorBtn.when_pressed = toggleState
+volumeDownBtn.when_pressed=volumeDown
 pause()
